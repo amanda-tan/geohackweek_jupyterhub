@@ -47,9 +47,11 @@ RUN conda env update --name root --file /home/$NB_USER/tmp/base-env.yml
 RUN rm -rf /home/$NB_USER/tmp
 
 # Install tutorial environments
-RUN git clone https://github.com/geohackweek/environments.git && \
-    cd environments && \
+RUN git clone https://github.com/geohackweek/tutorial_contents.git && \
+    cd tutorial_contents && \
     conda env update --name root --file raster/environment.yml && \
+    conda env update --name root --file nDarrays/environment.yml && \
+    conda env update --name root --file vector/environment.yml && \
     conda clean -tipsy
 
 RUN rm -rf /home/$NB_USER/environments
