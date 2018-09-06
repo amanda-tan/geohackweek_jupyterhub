@@ -33,6 +33,13 @@ RUN apt-get update && apt-get install -yq --no-install-recommends libav-tools\
 RUN sed -i /usr/local/bin/start.sh -e 's,# Handle username change,chown 1000:1000 /home/$NB_USER \n # Handle username change,'
 RUN cat /usr/local/bin/start.sh
 
+RUN cd /tmp && \
+    wget https://byss.arc.nasa.gov/stereopipeline/daily_build/StereoPipeline-2.6.1-2018-09-06-x86_64-Linux.tar.bz2 -O stereopipe_2_6_1.tar.bz2 && \
+    tar xvfj stereopipe_2_6_1.tar.bz2 && \
+    mv StereoPipeline-2.6.1-2018-09-06-x86_64-Linux/ /opt/stereopipeline/
+
+ENV PATH /opt/stereopipeline/bin:$PATH
+
 USER $NB_USER
 
 RUN mkdir /home/$NB_USER/tmp
