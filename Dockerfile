@@ -60,6 +60,7 @@ RUN git clone https://github.com/geohackweek/tutorial_contents.git && \
     conda env update --name root --file nDarrays/environment.yml && \
     conda env update --name root --file vector/environment.yml && \
     conda env update --name root --file visualization/environment.yml && \
+    conda env update --name root --file machinelearning/environment.yml && \
     conda clean -tipsy
 
 RUN rm -rf /home/$NB_USER/environments
